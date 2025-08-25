@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidayatur | Travel Wisata Muslim Dunia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; }
+        
+        /* Header */
+        header {
+            background-image: url('/image/kabah.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 1s ease-in;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        header > * { position: relative; z-index: 2; }
+        header h1 { font-size: 2.5rem; font-weight: 600; }
+        header h2 { font-size: 1.5rem; font-weight: 300; margin: 10px 0; }
+        header p { max-width: 600px; margin: 10px auto; }
+        .social-links a { color: #f4c430; margin: 0 10px; font-size: 1.2rem; text-decoration: none; }
+        .social-links a:hover { color: #fff; }
+        .header-stats { margin-top: 20px; }
+        .header-stats span { background: #28a745; padding: 5px 15px; border-radius: 20px; margin: 0 10px; }
+
+        /* Navbar */
+        nav {
+            background-color: #1a3c34;
+            color: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover { color: #f4c430; }
+
+        /* Section General */
+        section { padding: 60px 20px; animation: fadeIn 1s ease-in; }
+        section h2 { font-size: 2rem; margin-bottom: 20px; color: #1a3c34; }
+
+        /* Produk */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .product-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .product-item h3 { font-size: 1.2rem; color: #1a3c34; }
+        .product-item a {
+            display: inline-block;
+            margin-top: 10px;
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .product-item a:hover { background: #218838; }
+
+        /* Services */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .service-item a { color: #1a3c34; text-decoration: none; }
+        .service-item a:hover { color: #f4c430; }
+
+        /* Testimonials */
+        #testimonials blockquote {
+            background: #f4c430;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px auto;
+            max-width: 600px;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #28a745, #1a3c34);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .cta h2 { font-size: 2rem; margin-bottom: 10px; }
+        .cta p { font-size: 1.1rem; max-width: 500px; }
+        .cta a, .cta button {
+            background: #f4c430;
+            color: #1a3c34;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cta a:hover, .cta button:hover { background: #e0b028; }
+        .cta input {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 1rem;
+        }
+        .cta .subscribe-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover { transform: scale(1.05); }
+
+        /* FAQ */
+        .faq { background: #f9f9f9; }
+        .faq details {
+            max-width: 600px;
+            margin: 10px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        .faq summary { cursor: pointer; font-weight: 600; }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsivitas */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            header h2 { font-size: 1.2rem; }
+            nav ul { flex-direction: column; gap: 10px; }
+            .product-item, .gallery img { width: 100%; }
+            .cta-container { padding: 0 20px; }
+            .cta input { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Hidayatur | Travel Wisata Muslim Dunia</h1>
+        <h2>A Journey For Iman</h2>
+        <p>Dengan senang hati membantu Anda. Bila ada pertanyaan jangan ragu untuk bertanya kepada Kami.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/hidayatur.id/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a> |
+            <a href="https://www.tiktok.com/@hidayatur.id" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a> |
+            <a href="https://www.youtube.com/channel/UC0SVIXma-_XpEkJTr6Eg8Cg" target="_blank"><i class="fab fa-youtube"></i> YouTube</a> |
+            <a href="mailto:hidayatur.id@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+        <div class="header-stats">
+            <span>0 Tahun Pengalaman</span> | <span>0 Pelanggan Dilayani</span>
+        </div>
+    </header>
+
+    <!-- Navbar Menu -->
+    <nav>
+        <ul>
+            <li><a href="#products">Produk</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#cta">CTA</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Produk -->
+    <section id="products">
+        <h2>Produk Kami</h2>
+        <div class="products">
+            <div class="product-item">
+                <img src="/image/202307050319-hidayatur 15.png" alt="Masjid Nabawi">
+                <h3>Paket Wisata Islami Terbaru 2025</h3>
+                <p>Wisata Islami terbaru</p>
+                <a href="https://api.whatsapp.com/send?phone=6282120282823&text=Hallo%20admin%20Hidayatur%20saya%20melihat%20info%20dari%20website,%20saya%20ingin%20bertanya" target="_blank"><i class="fab fa-whatsapp"></i> Tanya via WhatsApp</a>
+            </div>
+            <div class="product-item">
+                <img src="/image/202307050322-hidayatur 30 - Copy.png" alt="Ka'bah di Mekkah">
+                <h3>Pilihan Paket Umroh</h3>
+                <p>Paket Umroh berkualitas</p>
+                <a href="https://api.whatsapp.com/send?phone=6282120282823&text=Hallo%20admin%20Hidayatur%20saya%20melihat%20info%20dari%20website,%20saya%20ingin%20bertanya" target="_blank"><i class="fab fa-whatsapp"></i> Tanya via WhatsApp</a>
+            </div>
+            <div class="product-item">
+                <img src="/image/202307050323-hidayatur 35.png" alt="Perjalanan Muslim">
+                <h3>Promo Umroh plus Wisata</h3>
+                <p>Promo spesial Umroh dan Wisata</p>
+                <a href="https://api.whatsapp.com/send?phone=6282120282823&text=Hallo%20admin%20Hidayatur%20saya%20melihat%20info%20dari%20website,%20saya%20ingin%20bertanya" target="_blank"><i class="fab fa-whatsapp"></i> Tanya via WhatsApp</a>
+            </div>
+            <div class="product-item">
+                <img src="/image/202307250316-IMG-20221112-WA0071.jpg" alt="Masjid Nabawi">
+                <h3>Paket Wisata Islami Terbaru 2025</h3>
+                <p>Wisata Islami terbaru</p>
+                <a href="https://api.whatsapp.com/send?phone=6282120282823&text=Hallo%20admin%20Hidayatur%20saya%20melihat%20info%20dari%20website,%20saya%20ingin%20bertanya" target="_blank"><i class="fab fa-whatsapp"></i> Tanya via WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service-item">
+                <h3>Handling</h3>
+                <a href="https://hidayatur.co.id/our-service-document/Handling" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Booking Hotel</h3>
+                <a href="https://hidayatur.co.id/our-service-document/booking-hotel" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Tiket Pesawat Promo</h3>
+                <a href="https://hidayatur.co.id/our-service-document/tiket-pesawat-promo" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Man Power</h3>
+                <a href="https://hidayatur.co.id/our-service-document/man-power" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Transportasi</h3>
+                <a href="https://hidayatur.co.id/our-service-document/transportasi" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Management Consultant</h3>
+                <a href="https://hidayatur.co.id/our-service-document/management-consultant" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Travel Stuff</h3>
+                <a href="https://hidayatur.co.id/our-service-document/travel-stuff" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Partnership</h3>
+                <a href="https://hidayatur.co.id/our-service-document/parthnership" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Badal Umroh</h3>
+                <a href="https://hidayatur.co.id/our-service-document/badal-umroh" target="_blank">Lihat Detail</a>
+            </div>
+            <div class="service-item">
+                <h3>Umroh Backpacker</h3>
+                <a href="https://hidayatur.co.id/our-service-document/umroh-backpacker" target="_blank">Lihat Detail</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Placeholder) -->
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <p>(Tidak ada testimonials spesifik di situs asli, jadi ini placeholder)</p>
+        <blockquote>
+            <p>"Pelayanan terbaik untuk umroh kami!" - Pelanggan A</p>
+        </blockquote>
+        <blockquote>
+            <p>"Sangat direkomendasikan!" - Pelanggan B</p>
+        </blockquote>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="cta">
+        <div class="cta-container">
+            <h2>Hubungi Kami</h2>
+            <p>Dapatkan informasi terupdate seputar umroh, travel, dan exclusive diskon untuk Anda!</p>
+            <a href="https://api.whatsapp.com/send?phone=6282120282823&text=Hallo%20admin%20Hidayatur%20saya%20melihat%20info%20dari%20website,%20saya%20ingin%20bertanya" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+            </a>
+            <h3>Subscribe</h3>
+            <p>Masukkan email Anda untuk berlangganan.</p>
+            <div class="subscribe-form">
+                <input type="email" placeholder="Email Anda">
+                <button><i class="fas fa-paper-plane"></i> Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <p>Galeri perjalanan wisata muslim dan umroh kami.</p>
+        <div class="gallery">
+            <img src="/image/mekah.jpg" alt="Masjid Nabawi">
+            <img src="/image/islami.jpg" alt="Ka'bah di Mekkah">
+            <img src="/image/Hajj.jpg" alt="Perjalanan Muslim">
+        </div>
+    </section>
+
+    <!-- FAQ (Placeholder) -->
+    <section id="faq" class="faq">
+        <h2>FAQ</h2>
+        <p>(Tidak ada FAQ spesifik di situs asli, jadi ini placeholder)</p>
+        <details>
+            <summary>Apa itu Umroh Backpacker?</summary>
+            <p>Umroh Backpacker adalah paket umroh hemat untuk traveler mandiri.</p>
+        </details>
+        <details>
+            <summary>Bagaimana cara booking hotel?</summary>
+            <p>Anda bisa menghubungi kami via WhatsApp untuk detail.</p>
+        </details>
+    </section>
+
+</body>
+</html>
